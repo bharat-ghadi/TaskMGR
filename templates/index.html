@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<title>ToDo</title>
+{% endblock %}
+
+{% block body %}
+
+<br>
+<div class="container">
+    <div class="container">
+        <div class="container">
+            <h6 class="header"
+                style="text-align: center; color:black;; background-color:red ; opacity: .75 ;">
+                {{message}}</h6>
+            <br>
+        </div>
+    </div>
+</div>
+
+<div class="content container text-center">
+    <h1 class="header"
+        style="text-align: center; color:aliceblue;; background-color:black ; opacity: .80;padding: 10px ;">
+        TASK MANAGER</h1>
+    <br>
+    {% if tasks|length < 1 %} <div class="container">
+        <h4 style="text-align: center; color:aliceblue;; background-color:darkcyan   ; opacity: .80;padding: 10px ;">
+            There are no tasks. Create one below!</h4>
+</div>
+{% else %}
+<table class="table table-info table-hover table-bordered">
+    <thead>
+        <tr class="">
+            <th>ID</th>
+            <th>Task</th>
+            <th>Added</th>
+            <th colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.id }}</td>
+            <td>{{ task.content }}</td>
+            <td>{{ task.date_created.date() }}</td>
+
+            <td>
+                <a href="/delete/{{task.id}}">Delete</a>
+            </td>
+            <td>
+                <a href="/update/{{task.id}}">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+<br>
+<form action="/" method='POST' style="text-align: center;">
+    <!-- <input type="text" autofocus="autofocus" name="content" id="content">
+            <input type="submit" value="Add Task"> -->
+    <div class="input-group mb-3">
+
+        <input type="text" name="content" id="content" class="form-control" placeholder="Add your task here."
+            autofocus="autofocus" aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <button class="btn btn-outline-secondary" type="submit" value="Add Task" id="button-addon1">Button</button>
+    </div>
+</form>
+
+</div>
+
+{% endblock %}

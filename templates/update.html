@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block head %}
+
+{% endblock %}
+
+
+{% block body %}
+<br><br>
+<div class="content">
+    <h1 class="header"
+        style="text-align: center; color:aliceblue;; background-color:black ; opacity: .80;padding: 10px ;">Upadate Task
+    </h1>
+    <br>
+    <!-- <table>
+        <tr>
+            <th>Task</th>
+            <th>Added</th>
+            <th colspan="2">Action</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.date_created.date() }}</td>
+                
+                <td>
+                    <a href="/delete/{{task.id}}">Delete</a>
+                </td>
+                <td>
+                    <a href="">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}     
+    </table>
+<br> -->
+    <div class="container">
+        <form action="/update/{{task.id}}" method='POST' style="text-align: center;">
+            <!-- <input type="text" autofocus="autofocus" name="content" id="content" value="{{task.content}}">
+        <input type="submit" > -->
+
+            <div class="input-group mb-3">
+
+                <input type="text" autofocus="autofocus" name="content" id="content" value="{{task.content}}"
+                    type="text" class="form-control" placeholder="Add your task here." autofocus="autofocus"
+                    aria-label="Example text with button addon" aria-describedby="button-addon1">
+                <button class="btn btn-outline-secondary" type="submit" value="Update" id="button-addon1">Edit Input
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
