@@ -1,2 +1,2 @@
-# Task Manager-flask
- Task manager app based on flask framework. Allows us CRUD operations.
+# Task-Manager_flask
+ Task Manager app with crud operations based on flask framework
